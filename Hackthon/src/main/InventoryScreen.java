@@ -26,7 +26,7 @@ import data.InventoryManager;
 
 public class InventoryScreen {
 	public static void main(String... args) {
-		JumboSettings.logerrors = false;
+		JumboSettings.logerrors = true;
 		Jumbo.setMainaction(() -> {
 			FruitManager.init();
 			InventoryManager.init();

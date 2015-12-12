@@ -30,7 +30,7 @@ public class FoodInput {
 	public static int id = 266271;
 
 	public static void main(String... args) {
-		JumboSettings.logerrors = false;
+		JumboSettings.logerrors = true;
 		Jumbo.setMainaction(() -> {
 			FruitManager.init();
 

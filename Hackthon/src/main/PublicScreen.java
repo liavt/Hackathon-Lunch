@@ -36,7 +36,7 @@ public class PublicScreen {
 	private final static String twitteraccount = "PlanoAHS";
 
 	public static void main(String... args) {
-		JumboSettings.logerrors = false;
+		JumboSettings.logerrors = true;
 		Jumbo.setMainaction(() -> {
 			FruitManager.init();
 			// A35100
@@ -90,7 +90,7 @@ public class PublicScreen {
 			// cb.setOAuthAuthenticationURL("https://api.twitter.com/oauth2/token");
 
 			final Twitter twitter = new TwitterFactory(cb.build()).getInstance();
-			final Paging paging = new Paging(1, 300);
+			final Paging paging = new Paging(1, 200);
 			final JumboGraphicsGroup tweets = new JumboGraphicsGroup(new Rectangle(300, 0, 780, 0)) {
 				/**
 				 * 
