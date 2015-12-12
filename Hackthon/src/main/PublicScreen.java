@@ -44,7 +44,7 @@ public class PublicScreen {
 			JumboSettings.tickdelay = 100;
 
 			final JumboScene s = new JumboScene();
-			final StringBuilder b = new StringBuilder("<is64#6E6F71>Menu:<i>\n\n\n");
+			final StringBuilder b = new StringBuilder("<is64#FFFFFF>Menu:<i>\n\n\n");
 			for (Fruit f : FruitManager.fruits) {
 				b.append(f.getName()).append("\n\n\n");
 			}
@@ -71,9 +71,9 @@ public class PublicScreen {
 			final JumboTimer timer = new JumboTimer(1000, () -> {
 				colon.set(!colon.get());
 				if (colon.get()) {
-					time.setText("<s32#6E6F71>" + new SimpleDateFormat("MMM d HH:mm:ss").format(new Date()));
+					time.setText("<s32#FFFFFF>" + new SimpleDateFormat("MMM d HH:mm:ss").format(new Date()));
 				} else {
-					time.setText("<s32#6E6F71>" + new SimpleDateFormat("MMM d HH mm ss").format(new Date()));
+					time.setText("<s32#FFFFFF>" + new SimpleDateFormat("MMM d HH mm ss").format(new Date()));
 				}
 			});
 			s.addEntity(timer);
@@ -90,7 +90,7 @@ public class PublicScreen {
 			// cb.setOAuthAuthenticationURL("https://api.twitter.com/oauth2/token");
 
 			final Twitter twitter = new TwitterFactory(cb.build()).getInstance();
-			final Paging paging = new Paging(1, 200);
+			final Paging paging = new Paging(1, 100);
 			final JumboGraphicsGroup tweets = new JumboGraphicsGroup(new Rectangle(300, 0, 780, 0)) {
 				/**
 				 * 
