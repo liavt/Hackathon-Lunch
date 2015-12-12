@@ -4,7 +4,11 @@ import java.awt.Dimension;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import com.jumbo.components.LambdaObject;
+import com.jumbo.components.entities.JumboTimer;
 import com.jumbo.components.entities.graphics.JumboImage;
 import com.jumbo.components.entities.graphics.JumboText;
 import com.jumbo.components.entities.graphics.JumboTextBox;
@@ -42,6 +46,17 @@ public class PublicScreen {
 
 			final JumboText time = new JumboText("");
 			s.addEntity(time);
+
+			final LambdaObject<Boolean> colon = new LambdaObject<>(false);
+			final JumboTimer timer = new JumboTimer(1000, () -> {
+				colon.set(!colon.get());
+				if (colon.get()) {
+					time.setText("<#000000>" + new SimpleDateFormat("MMM d HH:mm:ss").format(new Date()));
+				} else {
+					time.setText("<#000000>" + new SimpleDateFormat("MMM d HH mm ss").format(new Date()));
+				}
+			});
+			s.addEntity(timer);
 
 			Jumbo.setScene(s);
 		});

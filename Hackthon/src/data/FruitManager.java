@@ -2,6 +2,7 @@ package data;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
 
@@ -15,13 +16,19 @@ public class FruitManager {
 		final File[] files = directory.listFiles();
 		for (File f : files) {
 			try {
-				for (String s : Files.readAllLines(f.toPath())) {
-					String color = "FFFFFF";
+				String color = "FFFFFF";
+				int num = 0;
+				for (String s : Files.readAllLines(f.toPath(), Charset.forName("UTF-16"))) {
 					if (s.contains("color: ")) {
 						color = s.substring(7);
+					} else if (s.contains("num: ")) {
+						num = Integer.parseInt(s.substring(5));
 					}
-					fruits.add(new Fruit(f.getName(), color));
 				}
+
+				final Fruit fruit = new Fruit(f.getName(), color);
+				fruit.setNumber(num);
+				fruits.add(fruit);
 			} catch (IOException e) {
 				JumboErrorHandler.handle(e);
 			}
