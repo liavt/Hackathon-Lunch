@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.jumbo.tools.JumboErrorHandler;
 
@@ -18,7 +19,13 @@ public class FruitManager {
 			try {
 				String color = "FFFFFF";
 				int num = 0;
-				for (String s : Files.readAllLines(f.toPath(), Charset.forName("UTF-16"))) {
+				List<String> lines = null;
+				try {
+					lines = Files.readAllLines(f.toPath(), Charset.forName("UTF-16"));
+				} catch (Exception e) {
+					lines = Files.readAllLines(f.toPath(), Charset.forName("Cp1252"));
+				}
+				for (String s : lines) {
 					if (s.contains("color: ")) {
 						color = s.substring(7);
 					} else if (s.contains("num: ")) {
